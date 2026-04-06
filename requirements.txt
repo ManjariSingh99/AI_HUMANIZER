@@ -1,0 +1,20 @@
+# Django (Web Framework)
+Django>=4.2,<5.0
+
+# Core ML / NLP
+torch>=2.0.0
+transformers>=4.40.0
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+
+# Optional (only if needed)
+# tiktoken>=0.7.0
+
+# Semantic Similarity
+sentence-transformers>=2.6.0
+
+# Scientific / Utilities
+numpy>=1.24.0
+
+# Optional (recommended for performance/logging)
+tqdm>=4.66.0

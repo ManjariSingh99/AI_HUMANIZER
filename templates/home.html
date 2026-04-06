@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Humanizer</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>AI Content Humanizer</h1>
+
+<form method="POST" action="">
+    {% csrf_token %}
+    
+    <textarea 
+    name="input_text" 
+    placeholder="Enter at least 100 characters..." 
+    minlength="100"
+    required
+    ></textarea>
+
+
+    
+    <br>
+    <button type="submit">Process</button>
+
+
+    <script>
+        const textarea = document.querySelector('textarea');
+        const button = document.querySelector('button');
+
+        button.disabled = true;
+
+        textarea.addEventListener('input', function() {
+            if (textarea.value.length >= 100) {
+            button.disabled = false;
+            button.style.backgroundColor = "green";
+            button.style.cursor = "pointer";
+        } else {
+            button.disabled = true;
+            button.style.backgroundColor = "gray";
+            button.style.cursor = "not-allowed";
+        }
+        });
+    </script>
+
+</form>
+
+{% if result %}
+    <h2>Detection Result:</h2>
+
+    <p><strong>Original:</strong> {{ result.original_text }}</p>
+    <p><strong>AI Score:</strong> {{ result.detection.ai_score }}</p>
+    <p><strong>Perplexity:</strong> {{ result.detection.perplexity }}</p>
+    <p><strong>Repetition Score:</strong> {{ result.detection.repetition_score }}</p>
+    <p><strong>Label:</strong> {{ result.detection.label }}</p>
+    <p><strong>Confidence:</strong> {{ result.detection.confidence }}</p>
+    <p><strong>AI Probability:</strong> {{ result.detection.ai_probability }}%</p>
+
+    <hr>
+
+
+  
+
+    <h2>Rewritten Text:</h2>
+    <textarea 
+    name="output_text"
+    rows="6"
+    style="width:100%;"
+    readonly
+    >
+    {{ result.rewritten_text }}
+    </textarea>
+  
+
+        {% if result.rewrite_changed %}
+            <p style="color:green;">✔ Text was improved</p>
+        {% else %}
+            <p style="color:orange;">⚠ ✅ Text is already human-like. No rewrite needed.</p>
+        {% endif %}
+
+
+{% endif %}
+
+
+</body>
+</html>
