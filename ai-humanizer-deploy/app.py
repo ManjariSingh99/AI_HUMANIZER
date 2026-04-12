@@ -51,9 +51,19 @@ interface = gr.Interface(
         gr.Textbox(label="Final Output Text")
     ],
     title="AI Content Humanizer",
-    description="Detect and intelligently rewrite AI-generated text"
+    description="""
+        A work-in-progress AI system focused on detecting and humanizing machine-generated text.
+
+        This project is part of my learning journey in AI and backend systems.
+        
+        I'm currently refining the models, improving accuracy, and experimenting with better rewrite strategies.
+
+        This version reflects ongoing learning and iteration — feedback is always welcome.
+        """
 )
 
 
 if __name__ == "__main__":
-    interface.launch(share=True)
+    interface.launch(server_name="0.0.0.0", server_port=7860)
+    # interface.launch(share=True)   
+    # interface.launch()
