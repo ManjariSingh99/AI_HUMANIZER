@@ -3,6 +3,9 @@ import gradio as gr
 from ai_engine.detector import AIDetector
 from ai_engine.rewrite_engine import RewriteEngine
 
+import warnings
+warnings.filterwarnings("ignore")
+
 # Initialize once (IMPORTANT for performance)
 detector = AIDetector()
 rewriter = RewriteEngine(detector)
@@ -53,17 +56,14 @@ interface = gr.Interface(
     title="AI Content Humanizer",
     description="""
         A work-in-progress AI system focused on detecting and humanizing machine-generated text.
-
         This project is part of my learning journey in AI and backend systems.
-        
         I'm currently refining the models, improving accuracy, and experimenting with better rewrite strategies.
-
         This version reflects ongoing learning and iteration — feedback is always welcome.
         """
 )
 
 
 if __name__ == "__main__":
-    interface.launch(server_name="0.0.0.0", server_port=7860)
+    interface.launch(server_name="0.0.0.0", server_port=7860, ssr_mode=False)
     # interface.launch(share=True)   
     # interface.launch()
