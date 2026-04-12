@@ -44,19 +44,6 @@ It combines:
 - **Models:** GPT-2 (detection), T5 (rewriting)
 - **Language:** Python
 
----
-
-## 📂 Project Structure
-
-AI_HUMANIZER/
-├── ai_services/ # Detection + rewriting logic
-├── processing/ # Rewrite engine + pipeline
-├── core/ # Django app (views, routes)
-├── config/ # Django settings
-├── templates/ # UI templates
-├── manage.py
-└── requirements.txt
-
 
 ---
 
